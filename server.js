@@ -187,6 +187,6 @@ if (port == null || port == "") {
   port = 8000;
 }
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`app is running on port ${process.env.PORT}`);
+app.listen(port, () => {
+  console.log(`app is running on port ${port}`);
 });
