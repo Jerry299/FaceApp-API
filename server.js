@@ -178,7 +178,9 @@ app.put("/image", (req, res) => {
     return res.status(400).json("Not Found");
   } */
 });
+const dotenv = require("dotenv");
+dotenv.config();
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("app is running on port ${process.env.PORT}");
+app.listen(process.env.PORT, () => {
+  console.log(`app is running on port ${process.env.PORT}`);
 });
