@@ -48,12 +48,13 @@ const database = {
 
 //Routes .. I am going to simplify it some time soon.
 app.get("/", (req, res) => {
-  db.select("*")
+  /* db.select("*")
     .from("login")
     .then(data => {
       console.log("data", data);
       return res.json(data);
-    });
+    }); */
+  res.send("it is Working");
 });
 //sign In
 app.post("/signin", (req, res) => {
@@ -178,8 +179,9 @@ app.put("/image", (req, res) => {
     return res.status(400).json("Not Found");
   } */
 });
-const dotenv = require("dotenv");
-dotenv.config();
+// i used this to make process.env to 8626 seems heroku doesn't like it
+/* const dotenv = require("dotenv");
+dotenv.config(); */
 
 app.listen(process.env.PORT, () => {
   console.log(`app is running on port ${process.env.PORT}`);
