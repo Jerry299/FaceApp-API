@@ -68,14 +68,14 @@ app.post("/signin", (req, res) => {
     .where("email", "=", email)
     .then(data => {
       const isValid = bcrypt.compareSync(password, data[0].hash);
-      console.log(isValid);
-      console.log(data);
+      //console.log(isValid);
+      //console.log(data);
       if (isValid) {
         db.select("*")
           .from("users")
           .where("email", "=", email)
           .then(user => {
-            console.log("user", user[0]);
+            //console.log("user", user[0]);
             res.json(user[0]);
           })
           .catch(err => res.status(400).json("Unable to Sign In"));
@@ -112,7 +112,7 @@ app.post("/register", (req, res) => {
             joined: new Date()
           })
           .then(user => {
-            console.log(user);
+            //console.log(user);
             res.json(user[0]);
           });
       })
@@ -150,7 +150,7 @@ app.post("/imageURL", (req, res) => {
   Clarifaiapp.models
     .predict("a403429f2ddf4b49b307e318f00e528b", req.body.input)
     .then(data => res.json(data))
-    .catch(err => console.log(err));
+    .catch(err => console.error(err));
 });
 
 app.put("/image", (req, res) => {
@@ -180,13 +180,9 @@ app.put("/image", (req, res) => {
     return res.status(400).json("Not Found");
   } */
 });
-// i used this to make process.env to 8626 seems heroku doesn't like it
+// i used this to make process.env to 8626 during development and some how during production seems heroku doesn't like it
 /* const dotenv = require("dotenv");
 dotenv.config(); */
-let port = 3000;
-if (port == null || port == "") {
-  port = 8000;
-}
 
 app.listen(process.env.PORT || 3000, () => {
   console.log(`app is running on port ${port}`);
