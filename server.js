@@ -183,7 +183,7 @@ app.put("/image", (req, res) => {
 // i used this to make process.env to 8626 during development and some how during production seems heroku doesn't like it
 /* const dotenv = require("dotenv");
 dotenv.config(); */
-
-app.listen(process.env.PORT || 3000, () => {
+let port = process.env.PORT || 3000;
+app.listen(port, () => {
   console.log(`app is running on port ${port}`);
 });
